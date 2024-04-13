@@ -7,17 +7,18 @@ function h($str){
 //DB接続関数：db_conn()
 function db_conn(){
     try {
-      //Password:MAMP='root',XAMPP=''
+      // Password:MAMP='root',XAMPP=''
       $db_name = "php_form"; //データベース名
       $db_id = "root"; //アカウント名
       $db_pw =""; //パスワード
       $db_host = "localhost"; //DBホスト
-      return new PDO('mysql:dbname=php_form;charset=utf8;host=localhost','root','');
+      return new PDO('mysql:dbname='.$db_name.';charset=utf8;host='.$db_host,$db_id,$db_pw);
+
+
     } catch (PDOException $e) {
       exit('DB_CONECT:'.$e->getMessage());
     }
     }
-
 
 
 //SQLエラー関数：sql_error($stmt)

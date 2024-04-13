@@ -3,15 +3,15 @@
 //insert.phpを修正（関数化）してからselect.phpを開く！！
 include("funcs.php");
 $pdo = db_conn();
-try {
-  $db_name = "php_form";     //データベース名
-  $db_id   = "root";      //アカウント名
-  $db_pw   = "";          //パスワード：XAMPPはパスワード無しに修正してください。
-  $db_host = "localhost"; //DBホスト
-  $pdo = new PDO('mysql:dbname='.$db_name.';charset=utf8;host='.$db_host, $db_id, $db_pw);
-} catch (PDOException $e) {
-  exit('DB Connection Error:'.$e->getMessage());
-}
+// try {
+//   $db_name = "php_form";     //データベース名
+//   $db_id   = "root";      //アカウント名
+//   $db_pw   = "";          //パスワード：XAMPPはパスワード無しに修正してください。
+//   $db_host = "localhost"; //DBホスト
+//   $pdo = new PDO('mysql:dbname='.$db_name.';charset=utf8;host='.$db_host, $db_id, $db_pw);
+// } catch (PDOException $e) {
+//   exit('DB Connection Error:'.$e->getMessage());
+// }
 
 //２．データ登録SQL作成
 $sql = "SELECT * FROM php_form";

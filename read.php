@@ -33,6 +33,7 @@
     } catch (PDOException $e) {
         exit('DB_CONECT:'.$e->getMessage());
       }
+      
     // 2.データ登録SQL作成
     $sql = "SELECT * FROM php_form";
     $stmt = $pdo->prepare($sql);
