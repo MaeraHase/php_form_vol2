@@ -1,26 +1,18 @@
 <?php
 $id = $_GET["id"];
+// ini_set('display_errors', 1);
 //１．PHP
 //select.phpのPHPコードをマルっとコピーしてきます。
 //※SQLとデータ取得の箇所を修正します。
 include("funcs.php");
 $pdo = db_conn();
-try {
-  $db_name = "php_form";     //データベース名
-  $db_id   = "root";      //アカウント名
-  $db_pw   = "";          //パスワード：XAMPPはパスワード無しに修正してください。
-  $db_host = "localhost"; //DBホスト
-  $pdo = new PDO('mysql:=php_form'.$db_name.';charset=utf8;host='.$db_host, $db_id, $db_pw);
-} catch (PDOException $e) {
-  exit('DB Connection Error:'.$e->getMessage());
-}
 
 //２．データ登録SQL作成
-$sql = "SELECT * FROM php_form WHERE id=:id";
+$sql = 'SELECT * FROM php_form WHERE id=:id';
 $stmt = $pdo->prepare($sql);
-$stmt->bindValue(':id', $id, PDO::PARAM_INT);
-$stmt = $pdo->prepare($sql);
-$status = $stmt->execute();
+$stmt->bindValue(':id', intval($id), PDO::PARAM_INT);
+$status = $stmt->execute(); //データベースへの実際の接続はこの行で行う
+var_dump($id);
 
 //３．データ表示
 $values = "";
@@ -30,8 +22,9 @@ if($status==false) {
 //   exit("SQLError:".$error[2]);
 }
 
-//データ取得
+// //データ取得
 $v = $stmt->fetch(); //PDO::FETCH_ASSOC[カラム名のみで取得できるモード]
+// var_dump($v);
 // $json = json_encode($values,JSON_UNESCAPED_UNICODE);
 ?>
 <!--
